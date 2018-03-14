@@ -11,8 +11,12 @@ class ReplayMemory:
   def __init__(self, config, model_dir):
     self.model_dir = model_dir
 
+    print "memory size:" + str(config.memory_size)
+    print "config.screen_height:" + str(config.screen_height)
+    print "config.screen_height:" + str(config.screen_width)
+
     self.cnn_format = config.cnn_format
-    self.memory_size = config.memory_size
+    self.memory_size = config.memory_size / 3
     self.actions = np.empty(self.memory_size, dtype = np.uint8)
     self.rewards = np.empty(self.memory_size, dtype = np.integer)
     self.screens = np.empty((self.memory_size, config.screen_height, config.screen_width), dtype = np.float16)

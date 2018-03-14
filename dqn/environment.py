@@ -17,6 +17,8 @@ class Environment(object):
     self.reward = 0
     self.terminal = True
 
+    self.env.reset()
+
   def new_game(self, from_random_game=False):
     if self.lives == 0:
       self._screen = self.env.reset()
@@ -49,7 +51,7 @@ class Environment(object):
 
   @property
   def lives(self):
-    return self.env.ale.lives()
+    return self.env.unwrapped.ale.lives #self.env.ale.lives()
 
   @property
   def state(self):
